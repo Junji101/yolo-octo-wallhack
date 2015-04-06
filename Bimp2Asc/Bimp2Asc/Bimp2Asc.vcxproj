@@ -10,6 +10,30 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\add_fileformat.h" />
+    <ClInclude Include="Headers\bayer.h" />
+    <ClInclude Include="Headers\chlpca.h" />
+    <ClInclude Include="Headers\CImg.h" />
+    <ClInclude Include="Headers\cvMat.h" />
+    <ClInclude Include="Headers\draw_gradient.h" />
+    <ClInclude Include="Headers\inpaint.h" />
+    <ClInclude Include="Headers\ipl.h" />
+    <ClInclude Include="Headers\ipl_alt.h" />
+    <ClInclude Include="Headers\jpeg_buffer.h" />
+    <ClInclude Include="Headers\loop_macros.h" />
+    <ClInclude Include="Headers\matlab.h" />
+    <ClInclude Include="Headers\nlmeans.h" />
+    <ClInclude Include="Headers\patchmatch.h" />
+    <ClInclude Include="Headers\skeleton.h" />
+    <ClInclude Include="Headers\tiff_stream.h" />
+    <ClInclude Include="Headers\vrml.h" />
+    <ClInclude Include="Headers\vtk.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compile_win_icl.bat" />
+    <None Include="Resources\compile_win_visualcpp.bat" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F5B43EDD-EABF-4526-800F-6B26176B655F}</ProjectGuid>
     <RootNamespace>Bimp2Asc</RootNamespace>
@@ -59,8 +83,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

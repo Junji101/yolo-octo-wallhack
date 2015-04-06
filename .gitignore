@@ -27,3 +27,7 @@
 *.out
 *.app
 Bimp2Asc/Bimp2Asc.opensdf
+*.lastbuildstate
+Bimp2Asc/Bimp2Asc/Debug/Bimp2Asc.log
+*.cache
+Bimp2Asc/Bimp2Asc/Debug/Bimp2Asc.write.1.tlog
