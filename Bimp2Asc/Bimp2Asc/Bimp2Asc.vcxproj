@@ -34,6 +34,9 @@
     <None Include="Resources\compile_win_icl.bat" />
     <None Include="Resources\compile_win_visualcpp.bat" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenFile.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F5B43EDD-EABF-4526-800F-6B26176B655F}</ProjectGuid>
     <RootNamespace>Bimp2Asc</RootNamespace>
