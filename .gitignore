@@ -31,3 +31,10 @@ Bimp2Asc/Bimp2Asc.opensdf
 Bimp2Asc/Bimp2Asc/Debug/Bimp2Asc.log
 *.cache
 Bimp2Asc/Bimp2Asc/Debug/Bimp2Asc.write.1.tlog
+*.suo
+*.sdf
+*.filters
+*.vcxproj
+*.tlog
+Bimp2Asc/Bimp2Asc/Debug/vc100.pdb
+Bimp2Asc/Bimp2Asc/Debug/vc100.pdb
