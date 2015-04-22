@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{eef916d3-25a6-4927-81c8-3e4ef65fe8bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dll">
+      <UniqueIdentifier>{9bed6ab5-4944-4c3d-88fb-3e066684513d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\add_fileformat.h">
@@ -69,6 +75,12 @@
     <ClInclude Include="Headers\vtk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\inttypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenFile.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\compile_win_icl.bat">
@@ -77,10 +89,85 @@
     <None Include="Resources\compile_win_visualcpp.bat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ffmpeg.exe" />
+    <None Include="lib\avcodec-56.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\avdevice-56.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\avfilter-5.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\avformat-56.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\avutil-54.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\postproc-53.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\swresample-1.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\swscale-3.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="lib\libavcodec.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libswscale.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libavdevice.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libavfilter.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libavformat.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libavutil.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libpostproc.dll.a">
+      <Filter>dll</Filter>
+    </None>
+    <None Include="lib\libswresample.dll.a">
+      <Filter>dll</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\avcodec.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\avutil.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\avdevice.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\avfilter.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\avformat.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\postproc.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\swscale.lib">
+      <Filter>Lib</Filter>
+    </Library>
+    <Library Include="lib\swresample.lib">
+      <Filter>Lib</Filter>
+    </Library>
   </ItemGroup>
 </Project>

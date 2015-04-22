@@ -18,6 +18,7 @@
     <ClInclude Include="Headers\cvMat.h" />
     <ClInclude Include="Headers\draw_gradient.h" />
     <ClInclude Include="Headers\inpaint.h" />
+    <ClInclude Include="Headers\inttypes.h" />
     <ClInclude Include="Headers\ipl.h" />
     <ClInclude Include="Headers\ipl_alt.h" />
     <ClInclude Include="Headers\jpeg_buffer.h" />
@@ -29,13 +30,43 @@
     <ClInclude Include="Headers\tiff_stream.h" />
     <ClInclude Include="Headers\vrml.h" />
     <ClInclude Include="Headers\vtk.h" />
+    <ClInclude Include="OpenFile.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ffmpeg.exe">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="lib\avcodec-56.def" />
+    <None Include="lib\avdevice-56.def" />
+    <None Include="lib\avfilter-5.def" />
+    <None Include="lib\avformat-56.def" />
+    <None Include="lib\avutil-54.def" />
+    <None Include="lib\libavcodec.dll.a" />
+    <None Include="lib\libavdevice.dll.a" />
+    <None Include="lib\libavfilter.dll.a" />
+    <None Include="lib\libavformat.dll.a" />
+    <None Include="lib\libavutil.dll.a" />
+    <None Include="lib\libpostproc.dll.a" />
+    <None Include="lib\libswresample.dll.a" />
+    <None Include="lib\libswscale.dll.a" />
+    <None Include="lib\postproc-53.def" />
+    <None Include="lib\swresample-1.def" />
+    <None Include="lib\swscale-3.def" />
     <None Include="Resources\compile_win_icl.bat" />
     <None Include="Resources\compile_win_visualcpp.bat" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\avcodec.lib" />
+    <Library Include="lib\avdevice.lib" />
+    <Library Include="lib\avfilter.lib" />
+    <Library Include="lib\avformat.lib" />
+    <Library Include="lib\avutil.lib" />
+    <Library Include="lib\postproc.lib" />
+    <Library Include="lib\swresample.lib" />
+    <Library Include="lib\swscale.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F5B43EDD-EABF-4526-800F-6B26176B655F}</ProjectGuid>
@@ -63,7 +94,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Users\ANNIE\Desktop\opencv\build\x64\vc10\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -71,6 +104,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world300d.lib;opencv_world300.lib;opencv_ts300d.lib;opencv_ts300.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

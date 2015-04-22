@@ -1,19 +1,4 @@
-#include "Headers\CImg.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "Headers\inttypes.h"
-
-using namespace cimg_library;
-using namespace std;
-
-#define inline _inline
-#define HEIGHT  700
-#define WIDTH  550
-#define XBOX 5
-#define YBOX 5
-#define fileNum 14
-#define MAXBRIGHT 138975
+#include "OpenFile.h"
 
 char imageFile[] = {"duck.bmp"};
 char outFile[] = {"example.txt"};
@@ -23,7 +8,7 @@ int fileData[fileNum];
 int cData[HEIGHT][WIDTH];
 
 
-void chatData(int *cBox){
+void charData(int *cBox){
 	//int fileRay[] = calloc(fileNum*sizeof(int));
 	for (int k = 0; k < fileNum; k++){
 		CImg<unsigned char> image(fileNames[k]);
@@ -65,21 +50,19 @@ void doTheThing(string outPutFile, CImg<unsigned char> newImage){
 	ofstream myfile;
 	myfile.open(outPutFile);
 	myfile.clear();
-	CImg<unsigned char> image;
-	image = newImage;
+	CImg<unsigned char> image(newImage);
 	//CImg<unsigned char> image(imageFileName);
 	//CImgDisplay display(newimage,"This is a duck");
-	int* filePnt = &fileData[0];
-	chatData(filePnt);
+
 	//image.RGBtoHSL();
 	//display.wait();
-	cout << "Height: " << image._height << " Width: " << image._width << endl;
-	cout << "Warning: Image resolution must be below 550 x550" << endl;
-	cout << "How many half resize iterations" << endl;
-	int x;
-	cin >> x;
-	for (int k = 0; k < x; k++){
-		//image = image.resize_halfXY);
+	//cout << "Height: " << image._height << " Width: " << image._width << endl;
+	//cout << "Warning: Image resolution must be below 550 x550" << endl;
+	//cout << "How many half resize iterations" << endl;
+	if (RESIZE){
+		while (image.height()*image.width()/(XBOX*YBOX) > HEIGHT*WIDTH){
+			image.resize_halfXY();
+		}
 	}
 	//double newHeight = image._height*4/50 + .5;
 	//double newWidth = image._width*4/50 + .5;
@@ -87,7 +70,7 @@ void doTheThing(string outPutFile, CImg<unsigned char> newImage){
 	int newWidth = image._width;
 	int newHieght = image._height;
 	//vector<vector<float> > cData(newHieght, vector<float>(newWidth));
-	cout << "Second File: " << fileNames[1] << endl;
+	//cout << "Second File: " << fileNames[1] << endl;
 
 	cimg_forXY(image,x,y){
 		int Red =  image(x,y,0,0)*650;
@@ -122,16 +105,114 @@ void doTheThing(string outPutFile, CImg<unsigned char> newImage){
 	myfile.close();
 }
 
+void renderVideo(string s){
+	string str = "ffmpeg -i \"" + s + ".mp4\" -r 1 -f image2 example/image-%3d.bmp";
+	int i = system (str.c_str());
+}
+
+void loadVideo(string s, CImgList<unsigned char> bear){
+	bear.load_video("Best of skiing.mp4");
+}
+
+int frames(string Vid){
+	bool endImg = false;
+	int counter = 0;
+	while (endImg == false){
+		try{
+			//CImg <unsigned char> frame(Vid,counter);
+		}
+		catch(exception& e){
+			cout << "frames in video: "<<counter;
+			endImg = true;
+		}
+	}
+	return 0;
+}
+
+void decisionMake(int k){
+	string name;
+	if (k == 0){
+		cout << "Name of file: (Without extension)" << endl;
+		cin >> name;
+		renderVideo(name);
+	} else if (k == 1){
+		cout << "Name of file: (Without extension)" << endl;
+		cin >> name;
+		CImgList <unsigned char> imgList(MAXFRAMES);
+		loadVideo(name,imgList);
+	} else{
+		//continue;
+	}
+}
 
 int main(){
 	//doTheThing(outFile,imageFile);
-	CImgList<unsigned char> imageList;
-	imageList.load_ffmpeg_external("Best of skiing.mp4");
-	for (int z = 0; z < imageList.size();z++){
+	//CImgList<unsigned char> imageList;
+	int ans;
+	cout << "Render, Load, or Already processed? (0,1,2)" << endl;
+	cin >> ans;
+	while (ans < 0 || ans > 3){
+		cout << "Incorrect Parameter" << " Try again:" << endl;
+		cin >> ans;
+	}
+	decisionMake(ans);
+	cout << "Detecting frames" << endl << "Detecting Failed.." << "How many frames:" << endl;
+	int frames;
+	cin >> frames;
+	//CImgList<unsigned char> imageList(MAXFRAMES);//(name.c_str());
+
+	int* filePnt = &fileData[0];
+	charData(filePnt);
+	CImgDisplay Display;
+	cout << "Got em!!";
+	//int frames = 314;
+	for (int z = 1; z <= frames;z++){
+		string num;
+		if(z < 10){
+			num = "00" + to_string((_LONGLONG)z);
+		}else if( z < 100){
+			num = "0" + to_string((_LONGLONG)z);
+		} else	{
+			num = to_string((_LONGLONG)z);
+		}
+		cout << "We get num: " << num << endl;
+		string inFile = "example/image-" + num + ".bmp";
 		string outFile = "outPut/example" + to_string((_LONGLONG)z) + ".txt";
-		CImg <unsigned char> tempImage(imageList.at(z));
+		CImg <unsigned char> tempImage;
+		try{
+			tempImage.assign(inFile.c_str());
+		} catch(exception& e){
+			cout << "Can't find file: " << inFile << endl;
+		}
+		Display.display(tempImage);
+		//tempImage.display();
 		doTheThing(outFile,tempImage);
 	}
+	
+	//CImg<unsigned char> image();
+	//cin >> x;
+}
+
+int LoadImage(string name, int frames){
+	//doTheThing(outFile,imageFile);
+	
+	//imageList.load_ffmpeg_external("Best of skiing.mp4");
+	/*int i;
+	  printf ("Checking if processor is available...");
+	  if (system(NULL)) puts ("Ok");
+		else exit (EXIT_FAILURE);
+	  printf ("Executing command DIR...\n");
+	  string str = "ffmpeg -i \"" + name + ".mp4\" -r 1 -f image2 example/image-%3d.bmp";
+	  i=system (str.c_str());
+	  printf ("The value returned was: %d.\n",i);
+	//
+	*/
+	for (int z = 0; z < frames;z++){
+		string inFile = "example/image-" + to_string((_LONGLONG)z) + ".bmp";
+		string outFile = "outPut/example" + to_string((_LONGLONG)z) + ".txt";
+		//doTheThing(outFile,tempImage);
+	}
+	return 0;
 	//CImg<unsigned char> image();
 	//cin >> x;
 }
